@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>TSP Substitution</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="substitution.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h2>
+Teacher Substitution Process
+</h2>
+
+
+<div class="card">
+
+
+<label>Date</label>
+
+<input type="date" id="subDate">
+
+
+
+<label>Absent Teacher</label>
+
+<select id="absentTeacher">
+
+<option value="">Select Teacher</option>
+
+</select>
+
+
+<button onclick="loadPeriods()">
+Load Periods
+</button>
+
+
+</div>
+
+
+
+<div id="periodContainer"></div>
+
+
+
+<button class="saveBtn" onclick="saveSubstitution()">
+SAVE SUBSTITUTION
+</button>
+
+
+
+
+<div class="card">
+
+<h3>
+Today's Substitution
+</h3>
+
+<div class="card">
+
+<button onclick="downloadPDF()">
+Download PDF
+</button>
+
+</div>
+
+<div id="todayReport">
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>
+Teacher Count
+</h3>
+
+
+<div id="countReport">
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<script src="substitution.js"></script>
+
+
+</body>
+</html>

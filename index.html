@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>TSP Login</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="login-box">
+
+
+<h2>
+TSP Login
+</h2>
+
+
+<label>
+Username
+</label>
+
+<input 
+type="text"
+id="username"
+placeholder="Enter username"
+>
+
+
+
+<label>
+Password
+</label>
+
+<input 
+type="password"
+id="password"
+placeholder="Enter password"
+>
+
+
+<button onclick="login()">
+Login
+</button>
+
+
+<div id="msg"></div>
+
+
+</div>
+
+
+
+<script>
+
+
+function login(){
+
+
+let uname =
+document.getElementById("username").value;
+
+
+let pwd =
+document.getElementById("password").value;
+
+
+
+if(uname==="apms" && pwd==="Mahesh"){
+
+
+    // optional remember login
+    localStorage.setItem(
+        "tsp_login",
+        "yes"
+    );
+
+
+    window.location.href=
+    "substitution.html";
+
+
+}
+else{
+
+
+document.getElementById("msg").innerHTML=
+"Invalid Username or Password";
+
+
+}
+
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>

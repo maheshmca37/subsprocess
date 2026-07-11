@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TSP Timetable Import</title>
+    <link rel="stylesheet" href="config.css">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Excel Reader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Teacher Substitution Process (TSP)</h2>
+
+<div class="card">
+
+<label>Academic Year</label>
+
+<select id="academicYear">
+    <option value="1">2026-2027</option>
+</select>
+
+
+<br><br>
+
+<label>Select Excel File</label>
+
+<input type="file" id="excelFile" accept=".xlsx">
+
+
+<br><br>
+
+<button onclick="importExcel()">
+    Import Timetable
+</button>
+
+
+<div id="status"></div>
+
+</div>
+
+
+</div>
+
+
+<script src="config.js"></script>
+
+</body>
+</html>
