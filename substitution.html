@@ -45,7 +45,7 @@ Teacher Substitution Process
 </select>
 
 
-<button onclick="loadPeriods()">
+<button id="loadBtn" onclick="loadPeriods()">
 Load Periods
 </button>
 
@@ -57,11 +57,14 @@ Load Periods
 <div id="periodContainer"></div>
 
 
+<button 
+id="saveBtn"
+class="saveBtn" 
+onclick="saveSubstitution()">
 
-<button class="saveBtn" onclick="saveSubstitution()">
 SAVE SUBSTITUTION
-</button>
 
+</button>
 
 
 
@@ -79,7 +82,6 @@ Today's Substitution
 <div id="todayReport">
 
 </div>
-
 
 
 <button onclick="downloadPDF()">

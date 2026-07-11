@@ -82,6 +82,19 @@ return d.toLocaleDateString(
 async function loadPeriods(){
 
 
+let btn=document.getElementById("loadBtn");
+
+
+if(btn.disabled){
+    return;
+}
+
+
+btn.disabled=true;
+btn.innerHTML="Loading...";
+
+
+
 let teacher=
 document.getElementById("absentTeacher").value;
 
@@ -114,6 +127,9 @@ currentPeriods=data;
 
 
 displayPeriods(data,date);
+
+btn.disabled=false;
+btn.innerHTML="Load Periods";
 
 
 }
@@ -267,7 +283,19 @@ ${options}
 
 async function saveSubstitution(){
 
+let saveBtn=document.getElementById("saveBtn");
 
+
+if(saveBtn.disabled){
+
+    return;
+
+}
+
+
+saveBtn.disabled=true;
+
+saveBtn.innerHTML="Saving...";
 
 let date=
 document.getElementById("subDate").value;
@@ -341,6 +369,9 @@ await loadCountReport();
 
 }
 
+saveBtn.disabled=false;
+
+saveBtn.innerHTML="SAVE SUBSTITUTION";
 
 }
 

@@ -1,0 +1,128 @@
+DELETE FROM tsp_substitutions;
+
+DELETE FROM tsp_timetables;
+
+DELETE FROM tsp_classes;
+
+DELETE FROM tsp_teachers;
+
+SELECT COUNT(*) FROM tsp_substitutions;
+SELECT COUNT(*) FROM tsp_timetables;
+SELECT COUNT(*) FROM tsp_classes;
+SELECT COUNT(*) FROM tsp_teachers;
+
+
+create table tsp_schools
+(
+id bigint generated always as identity primary key,
+
+school_name text not null,
+
+created_at timestamp default now()
+);
+
+
+create table tsp_academic_years
+(
+id bigint generated always as identity primary key,
+
+school_id bigint references tsp_schools(id),
+
+year_name text,
+
+is_active boolean default true
+);
+
+
+create table tsp_teachers
+(
+id bigint generated always as identity primary key,
+
+school_id bigint references tsp_schools(id),
+
+academic_year_id bigint references tsp_academic_years(id),
+
+teacher_name text
+);
+
+
+
+create table tsp_classes
+(
+id bigint generated always as identity primary key,
+
+school_id bigint references tsp_schools(id),
+
+academic_year_id bigint references tsp_academic_years(id),
+
+class_name text
+);
+
+
+
+
+create table tsp_timetables
+(
+id bigint generated always as identity primary key,
+
+school_id bigint references tsp_schools(id),
+
+academic_year_id bigint references tsp_academic_years(id),
+
+teacher_id bigint references tsp_teachers(id),
+
+class_id bigint references tsp_classes(id),
+
+subject text,
+
+day text,
+
+period_no int
+);
+
+create table tsp_substitutions
+(
+id bigint generated always as identity primary key,
+
+school_id bigint references tsp_schools(id),
+
+academic_year_id bigint references tsp_academic_years(id),
+
+substitution_date date,
+
+day text,
+
+period_no int,
+
+class_id bigint references tsp_classes(id),
+
+subject text,
+
+absent_teacher_id bigint references tsp_teachers(id),
+
+assigned_teacher_id bigint references tsp_teachers(id),
+
+created_at timestamp default now(),
+
+constraint unique_tsp_substitution
+
+unique
+(
+school_id,
+substitution_date,
+class_id,
+period_no
+)
+
+);
+
+
+
+
+
+
+
+select *
+from tsp_teacher_assignment_count(101);
+
+
