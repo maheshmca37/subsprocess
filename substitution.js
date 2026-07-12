@@ -398,7 +398,7 @@ assigned_teacher:tsp_teachers!assigned_teacher_id(teacher_name)
 
 
 let html=
-"<table><tr><th>Pno</th><th>Class</th><th>Abs</th><th>Assigned</th></tr>";
+"<table><tr><th>Pno</th><th>Class</th><th>Assigned To</th><th>Leave</th></tr>";
 
 
 
@@ -412,9 +412,8 @@ html+=
 <td>${x.period_no}</td>
 
 <td>${x.tsp_classes.class_name}</td>
-<td>${x.absent_teacher.teacher_name}</td>
-
 <td>${x.assigned_teacher.teacher_name}</td>
+<td>${x.absent_teacher.teacher_name}</td>
 
 </tr>
 `;
@@ -456,13 +455,14 @@ let {data,error}=await db
 .select(`
 
 period_no,
-subject,
 
 tsp_classes(class_name),
+assigned_teacher:tsp_teachers!assigned_teacher_id(teacher_name),
 
 absent_teacher:tsp_teachers!absent_teacher_id(teacher_name),
+subject
 
-assigned_teacher:tsp_teachers!assigned_teacher_id(teacher_name)
+
 
 `)
 
@@ -493,7 +493,7 @@ let doc=new jsPDF();
 doc.setFontSize(16);
 
 doc.text(
-"Teacher Substitution Report",
+"Teacher Substitution For:",
 14,
 15
 );
@@ -523,11 +523,12 @@ x.period_no,
 
 x.tsp_classes.class_name,
 
-x.subject,
+x.assigned_teacher.teacher_name,
 
 x.absent_teacher.teacher_name,
+x.subject
 
-x.assigned_teacher.teacher_name
+
 
 ]);
 
@@ -547,9 +548,10 @@ head:[
 [
 "Period",
 "Class",
-"Subject",
-"Absent",
-"Assigned"
+"Assigned To",
+"Leave",
+"Subject"
+
 ]
 
 ],
